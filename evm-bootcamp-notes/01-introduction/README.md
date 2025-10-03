@@ -124,10 +124,14 @@ $$
 T = \{ \text{nonce}, \ \text{to}, \ \text{value}, \ \text{gasLimit}, \ \text{gasPrice}, \ \text{data} \}
 $$
 
+
+
 - Your **private key** signs the transaction:  
 
+
+
 $$
-\text{signature} = \text{ECDSA\_Sign}(T, k)
+\text{signature} = \text{ECDSA_Sign}(T, k)
 $$
 
 - Miners/validators verify your signature with your **public key**.  
