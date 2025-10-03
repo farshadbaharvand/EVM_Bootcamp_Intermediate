@@ -131,8 +131,9 @@ $$
 
 
 $$
-\text{signature} = \text{ECDSA_Sign}(T, k)
+\text{signature} = \text{ECDSA\_Sign}(T, k)
 $$
+
 
 - Miners/validators verify your signature with your **public key**.  
 - Transaction is included in the blockchain.  
