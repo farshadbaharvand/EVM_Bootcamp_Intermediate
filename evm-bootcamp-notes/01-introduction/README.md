@@ -275,8 +275,7 @@ $$
 | **Timestamp** | When the block was created |
 | **Validator/Miner** | Node that proposed the block |
 
-![Ethereum Block](https://ethereum.org/static/blocks-diagram-efb9c92e5dcdd507b8b2f6c2855bdf27.png)  
-*Illustration of Ethereum blocks forming a chain.*
+![Ethereum Block](/evm-bootcamp-notes/images/block.png)  
 
 **Note:** Each block references the previous block, creating an **immutable ledger**.
 
