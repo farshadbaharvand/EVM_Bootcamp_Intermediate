@@ -3,19 +3,6 @@
 
 ---
 
-## Overview  
-
-In this lesson, you will learn:  
-
-- What a **wallet** is and why it matters.  
-- How to use **Metamask** to manage your Ethereum accounts.  
-- How a **public–private key pair** works with simple math.  
-- How to connect to the **Sepolia testnet**.  
-- How to **fund your wallet** using a Faucet.  
-- How to **send a native ETH transaction**.  
-
----
-
 ## What is a Wallet?  
 
 A **wallet** is a software or hardware tool that lets you **store, send, and receive cryptocurrency**.  
@@ -23,9 +10,7 @@ A **wallet** is a software or hardware tool that lets you **store, send, and rec
 - Think of a wallet as a **bank account** for the blockchain.  
 - Unlike banks, you control your funds entirely with **cryptographic keys**.  
 
-![Ethereum Wallet Concept](https://ethereum.org/static/f8bb41f8de8f8322e21a2e59954e07ee/9f15a/wallets.png)  
-*Figure: A wallet acts as your gateway to the blockchain.*  
-![d](/evm-bootcamp-notes/)
+
 ---
 
 ## Finding Wallet Applications  
@@ -39,7 +24,7 @@ There are many Ethereum wallets:
 | **Hardware Wallets** | Ledger, Trezor | Store keys offline | Very secure | Costs money |
 
  For this lesson, we'll use **Metamask** (a free browser extension).  
-
+![Ethereum Wallet Concept](/evm-bootcamp-notes/images/wallet.png)
 ---
 
 ## Using Metamask  
@@ -50,8 +35,7 @@ There are many Ethereum wallets:
 
 **Warning:** Never share your recovery phrase. Whoever has it can access all your funds.  
 
-![Metamask Setup](https://miro.medium.com/v2/resize:fit:1200/1*X-dQ4g6dvM7zjXjHkqKfHg.png)  
-*Figure: Metamask wallet creation screen.*  
+![Metamask Setup](/evm-bootcamp-notes/images/metamask.png)  
 
 ---
 
@@ -116,8 +100,7 @@ Steps:
 3. Click **Send me ETH**.  
 4. Check Metamask balance → you now have test ETH.  
 
-![Faucet Example](https://miro.medium.com/v2/resize:fit:1200/1*DkFeFSilK3NhlxMvl_zlFw.png)  
-*Figure: Example of requesting ETH from a faucet.*  
+![Faucet Example](/evm-bootcamp-notes/images/sepolia.png)  
 
 ---
 
@@ -216,8 +199,7 @@ Searching for a wallet address on [Etherscan.io](https://etherscan.io) shows:
 | Token Holdings | ERC-20/ERC-721 tokens associated with the address |
 | Contract Interactions | Calls made to smart contracts |
 
-![Etherscan Wallet View](https://etherscan.io/images/logo-etherscan.svg)  
-*Etherscan interface showing wallet information.*
+
 
 **Tip:** Always verify transaction hashes on Etherscan to confirm the transaction was processed.
 
