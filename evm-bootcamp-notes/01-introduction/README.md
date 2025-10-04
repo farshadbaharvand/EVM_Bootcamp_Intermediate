@@ -432,7 +432,9 @@ When you swap an amount of token A into the pool, the reserves shift but the pro
 - \(dx\) = amount of Token A added (input)
 - \(dy\) = amount of Token B removed (output)
 - fee (Uniswap v2 typical) = 0.3% = 0.003
-- effective input \(dx_{\text{eff}} = dx \cdot (1 - \text{fee})\)
+- effective input 
+
+$$\(dx_{\text{eff}} = dx \cdot (1 - \text{fee})\)$$
 
 **Swap formula (derived from invariants):**
 
