@@ -502,10 +502,7 @@ $$
 | Best for | Continuous liquidity & small trades | Deep liquidity and price discovery for large trades |
 | Complexity | Simpler UX, predictable math | Requires order matching, limit orders |
 
----
 
-![Uniswap Logo](https://upload.wikimedia.org/wikipedia/commons/2/28/Uniswap_logo.png)  
-*Uniswap logo — alt text: "Uniswap logo".*
 
 ---
 
@@ -573,11 +570,6 @@ $$
 
 
 
-## Trying it out
-
-* Using Uniswap as an example
-* What is a dApp
-* Swap transaction example
 
 ## Contract interaction: Token Swap
 
@@ -590,6 +582,8 @@ $$
 ### References for Remix
 
 <https://remix-ide.readthedocs.io/en/latest/>
+
+
 
 ## Coding HelloWorld.sol contract with Solidity
 
@@ -606,6 +600,286 @@ $$
 * Constructor function
 * Functions
 * Return values
+
+
+
+
+# Beginner-Friendly Guide: Coding `HelloWorld.sol` with Solidity
+
+> **Goal:** Step-by-step guide to understanding and coding a basic Solidity contract. Covers Solidity philosophy, OOP concepts, contract structure, state variables, functions, constructors, and return values.
+
+---
+
+![Solidity Logo](https://upload.wikimedia.org/wikipedia/commons/9/95/Solidity_logo.png)  
+*Solidity logo — alt text: "Solidity logo".*
+
+---
+
+## 1. Solidity Philosophy
+
+Solidity is a **high-level, contract-oriented programming language** designed for **Ethereum smart contracts**.
+
+**Key points:**
+- **Smart contract-focused:** Solidity allows writing contracts that manage **assets, logic, and rules** on-chain.
+- **Statically typed:** All variables and functions must declare their types.
+- **Compiled to EVM bytecode:** Contracts run on the **Ethereum Virtual Machine (EVM)**.
+
+**Tip:** Think of Solidity as **JavaScript + C++** for smart contracts — it has JavaScript-like syntax with Ethereum-specific features.
+
+---
+
+## 2. OOP Basics of Solidity
+
+Solidity supports **object-oriented programming concepts**, including:
+
+- **Contracts as classes:** Each contract is like a class containing data and behavior.
+- **State variables:** Represent the **attributes** of the contract (like class fields).
+- **Functions:** Represent **methods** that manipulate state or perform calculations.
+- **Inheritance:** Contracts can inherit from other contracts to reuse logic.
+- **Modifiers:** Control function execution (like access control).
+
+**Example analogy:**
+
+| Solidity Term | OOP Analogy | Description |
+|---------------|------------|------------|
+| Contract      | Class      | Blueprint for smart contract objects |
+| State variable| Field      | Data stored in contract storage |
+| Function      | Method     | Behavior or action the contract can perform |
+| Constructor   | Constructor | Initializes contract state at deployment |
+
+---
+
+## 3. Contract Structure
+
+A typical Solidity contract has several sections. Step-by-step:
+
+### 3.1 SPDX License Identifier
+Specifies the license for your code. Helps tools like Solidity compiler understand usage rights.
+
+~~~~solidity
+// SPDX-License-Identifier: GPL-3.0
+~~~~
+
+> **Tip:** Always include SPDX for clarity and to avoid compiler warnings.
+
+---
+
+### 3.2 Pragmas
+Defines the Solidity compiler version.
+
+~~~~solidity
+pragma solidity >=0.7.0 <0.9.0;
+~~~~
+
+> **Explanation:**  
+- `>=0.7.0` → Compatible with version 0.7.0 and above  
+- `<0.9.0` → Not compatible with version 0.9.0 and above  
+- Helps ensure your code compiles predictably.
+
+---
+
+### 3.3 Imports
+You can import other Solidity files or libraries for reuse.
+
+~~~~solidity
+import "./SafeMath.sol"; // Example import of a library
+~~~~
+
+> **Tip:** Use OpenZeppelin libraries for secure and tested code.
+
+---
+
+### 3.4 Comments
+Solidity supports single-line `//` and multi-line `/* ... */` comments.
+
+~~~~solidity
+// Single-line comment
+/* Multi-line
+   comment */
+~~~~
+
+---
+
+### 3.5 Contract Definition
+Contracts are the blueprint of your on-chain program.
+
+~~~~solidity
+contract HelloWorld {
+    // Contract code goes here
+}
+~~~~
+
+> **Important:** Contract names are **case-sensitive** and should be **PascalCase**.
+
+---
+
+## 4. State Variables
+
+State variables store **data permanently on-chain**.
+
+~~~~solidity
+string public greeting = "Hello, Blockchain!";
+~~~~
+
+- `string` → Data type for text  
+- `public` → Automatically creates a getter function  
+- Stored in **contract storage** (permanent, costs gas to write)
+
+**Note:** Reading state variables (`view`) is free; writing costs gas.
+
+---
+
+## 5. Contract Storage
+
+Solidity has three types of storage:
+
+| Storage Type | Location | Gas Cost | Notes |
+|--------------|---------|----------|------|
+| **Storage**  | On-chain | High     | Persistent between transactions |
+| **Memory**   | Temporary | Low    | Exists only during function execution |
+| **Stack**    | EVM stack | Very Low | Used for local function variables |
+
+> **Tip:** Minimize writing to **storage** to save gas.
+
+---
+
+## 6. Constructor Function
+
+The constructor is executed **once at deployment** to initialize contract state.
+
+~~~~solidity
+constructor() {
+    greeting = "Hello, Ethereum!";
+}
+~~~~
+
+**Explanation:**  
+- No return value  
+- Can take arguments to initialize variables dynamically  
+
+**Example with parameter:**
+
+~~~~solidity
+constructor(string memory _greeting) {
+    greeting = _greeting;
+}
+~~~~
+
+---
+
+## 7. Functions
+
+Functions define **behavior** of the contract.
+
+- **Public / external:** Accessible by users or other contracts
+- **Internal / private:** Only accessible within the contract or derived contracts
+- **View / pure:** Does not modify state (view can read; pure cannot even read state)
+
+### Example:
+
+~~~~solidity
+function helloWorld() public view returns (string memory) {
+    return greeting;
+}
+~~~~
+
+**Explanation:**
+- `public` → Anyone can call
+- `view` → Reads state but does not modify it
+- `returns (string memory)` → Returns a string stored in memory
+
+---
+
+## 8. Return Values
+
+- Functions can **return values** to the caller.
+- Memory variables exist **temporarily** during function execution.
+
+**Example:**
+
+~~~~solidity
+function getGreeting() public view returns (string memory) {
+    return greeting;
+}
+~~~~
+
+> Calling this function returns the current greeting string.
+
+---
+
+## 9. Full HelloWorld Contract Example
+
+~~~~solidity
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.7.0 <0.9.0;
+
+contract HelloWorld {
+
+    string public greeting;
+
+    // Constructor executed once at deployment
+    constructor(string memory _greeting) {
+        greeting = _greeting;
+    }
+
+    // Returns the greeting message
+    function helloWorld() public view returns (string memory) {
+        return greeting;
+    }
+}
+~~~~
+
+---
+
+## 10. Step-by-Step Execution Flow
+
+1. **Deployment:**  
+   - Constructor runs, sets `greeting`
+2. **State:**  
+   - `greeting` stored in contract storage
+3. **Function Call:**  
+   - `helloWorld()` reads the `greeting` variable
+4. **Return:**  
+   - Returns `"Hello, Ethereum!"` (or the value passed in constructor)
+
+---
+
+## 11. Tips and Best Practices
+
+- Always include **SPDX License** and **pragma**.  
+- Use **PascalCase** for contract names.  
+- Minimize storage writes to save gas.  
+- Use `public` for state variables to auto-generate getters.  
+- Use **view / pure** functions whenever no state modification is needed.  
+- Comment your code for clarity.  
+
+---
+
+## 12. Summary Table
+
+| Component | Purpose | Example |
+|-----------|--------|--------|
+| SPDX License | License info | `// SPDX-License-Identifier: GPL-3.0` |
+| Pragma | Compiler version | `pragma solidity >=0.7.0 <0.9.0;` |
+| Import | External libraries | `import "./SafeMath.sol";` |
+| State Variable | Store on-chain data | `string public greeting;` |
+| Constructor | Initialize state | `constructor(string memory _greeting) { ... }` |
+| Function | Define behavior | `function helloWorld() public view returns(string memory)` |
+
+---
+
+## 13. Visual Diagram of Contract Structure
+
+~~~~
+Contract HelloWorld
+├── State Variables
+│    └── greeting : string (storage)
+├── Constructor(_greeting)
+│    └── sets greeting
+└── Function helloWorld()
+     └── returns greeting
+~~~~
+
 
 ### Code Reference
 
