@@ -550,8 +550,8 @@ $$
 $$1 \text{ Gwei} = 10^{-9}\ \text{ETH}$$
 
 **Example numbers:**
-- Gas Used (estimate for ERC-20 swap): \( \text{GasUsed} = 150{,}000 \) gas  
-- Gas Price: \(20\) Gwei
+- Gas Used (estimate for ERC-20 swap): $$\( \text{GasUsed} = 150{,}000 \)$$ gas  
+- Gas Price: $$\(20\)$$ Gwei
 
 **Step-by-step calculation:**
 
