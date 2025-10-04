@@ -448,11 +448,11 @@ $$
 ### Example: Swap 1 ETH → DAI (step-by-step numeric)
 
 **Initial reserves:**
-- \(x = 100\) ETH  
-- \(y = 20{,}000\) DAI
+- $$\(x = 100\)$$ ETH  
+- $$\(y = 20{,}000\)$$ DAI
 
-**Trader swaps:** \(dx = 1\) ETH  
-**Fee:** \(0.3\% = 0.003\) ⇒ multiplier \(1 - \text{fee} = 0.997\)
+**Trader swaps:** $$\(dx = 1\)$$ ETH  
+**Fee:** $$\(0.3\% = 0.003\)$$ ⇒ multiplier \(1 - \text{fee} = 0.997\)$$
 
 **Step 1 — effective input:**
 
