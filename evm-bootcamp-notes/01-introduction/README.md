@@ -179,9 +179,7 @@ $$
 
 # How Ethereum Works
 
-This guide provides a **step-by-step, beginner-friendly explanation** of Ethereum, covering everything from **transactions** and **gas** to the **Ethereum Virtual Machine (EVM)** and **accounts**. Visual examples, tables, and diagrams are included to clarify concepts.
 
----
 
 ## 1. Explaining Etherscan
 
@@ -916,14 +914,7 @@ contract HelloWorld {
 * Attaching
 
 
-# Beginner-Friendly Guide: Compiling and Deploying Solidity Contracts
-
-> **Goal:** Step-by-step guide for compiling, understanding bytecode & ABI, and deploying Ethereum smart contracts with detailed explanations, examples, formulas, and tips.
-
----
-
-![Ethereum Deployment](https://upload.wikimedia.org/wikipedia/commons/6/6f/Ethereum-icon-purple.svg)  
-*Alt text: "Ethereum deployment process".*
+# Compiling and Deploying Solidity Contracts
 
 ---
 
