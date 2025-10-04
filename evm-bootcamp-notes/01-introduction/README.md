@@ -387,6 +387,185 @@ Ethereum has **two main account types**:
 
 ---
 
+## What is a **dApp**?
+
+A **decentralized application (dApp)** is like a regular app but:
+- It uses a **blockchain** (e.g., Ethereum) for state and logic.
+- The **backend logic** often lives inside **smart contracts**.
+- The **frontend** is a web UI (React, Vue, etc.) that talks to the smart contracts via a wallet (MetaMask, WalletConnect).
+
+**Key properties of dApps:**
+- **Decentralized backend:** data & logic on-chain.
+- **Permissionless:** anyone can interact (subject to gas and contract logic).
+- **Transparent:** transactions are public (viewable on Etherscan).
+
+**Simple diagram (visual):**
+
+~~~~
+[User Browser (React)] --(RPC via ethers.js/wagmi)--> [Wallet (MetaMask)]
+        |                                             |
+        |                                             V
+        |                                        [Ethereum Node / Provider]
+        |                                             |
+        V                                             V
+     UI Actions  ------------------------------> [Smart Contract (on-chain)]
+~~~~
+
+---
+
+## Using **Uniswap** as an example (AMM)
+
+**Uniswap** is a **Decentralized Exchange (DEX)** that uses an **Automated Market Maker (AMM)** model instead of an order book.
+
+### The core idea: **Constant product AMM (Uniswap V2)**
+Pools hold two tokens with reserves \(x\) and \(y\). The invariant is:
+
+$$
+x \cdot y = k
+$$
+
+When you swap an amount of token A into the pool, the reserves shift but the product stays (approximately) constant, and the trader receives token B.
+
+**Notation**
+- \(x\) = reserve of Token A (e.g., ETH)
+- \(y\) = reserve of Token B (e.g., DAI)
+- \(dx\) = amount of Token A added (input)
+- \(dy\) = amount of Token B removed (output)
+- fee (Uniswap v2 typical) = 0.3% = 0.003
+- effective input \(dx_{\text{eff}} = dx \cdot (1 - \text{fee})\)
+
+**Swap formula (derived from invariants):**
+
+$$
+dy = y - \frac{k}{x + dx_{\text{eff}}}
+\qquad\text{where}\quad k = x \cdot y
+$$
+
+---
+
+### Example: Swap 1 ETH → DAI (step-by-step numeric)
+
+**Initial reserves:**
+- \(x = 100\) ETH  
+- \(y = 20{,}000\) DAI
+
+**Trader swaps:** \(dx = 1\) ETH  
+**Fee:** \(0.3\% = 0.003\) ⇒ multiplier \(1 - \text{fee} = 0.997\)
+
+**Step 1 — effective input:**
+
+$$
+dx_{\text{eff}} = dx \times 0.997 = 1 \times 0.997 = 0.997
+$$
+
+**Step 2 — constant product \(k\):**
+
+$$
+k = x \cdot y = 100 \times 20{,}000 = 2{,}000{,}000
+$$
+
+**Step 3 — new \(x\) after input:**
+
+$$
+x' = x + dx_{\text{eff}} = 100 + 0.997 = 100.997
+$$
+
+**Step 4 — new \(y\) to satisfy invariant:**
+
+$$
+y' = \frac{k}{x'} = \frac{2{,}000{,}000}{100.997} \approx 19{,}802.56839312059
+$$
+
+**Step 5 — output to trader \(dy\):**
+
+$$
+dy = y - y' = 20{,}000 - 19{,}802.56839312059 \approx 197.43160687941054
+$$
+
+**Conclusion:** The trader receives **~197.4316 DAI** for 1 ETH in this pool.
+
+**Notes & interpretations:**
+- **Price impact**: swapping a non-negligible amount relative to reserves moves the price.
+- **Slippage**: if market price moves between submitting and inclusion, the actual output may differ.
+- **Tip:** Larger pools (bigger reserves) reduce price impact for the same trade size.
+
+---
+
+### AMM vs Order Book — Quick Comparison
+
+| Feature | AMM (Uniswap) | Order Book |
+|---|---:|:---|
+| Price formation | Liquidity pool invariant | Matched buy/sell orders |
+| Liquidity provider returns | Earn fees + impermanent loss | Spread capture / maker rebates |
+| Best for | Continuous liquidity & small trades | Deep liquidity and price discovery for large trades |
+| Complexity | Simpler UX, predictable math | Requires order matching, limit orders |
+
+---
+
+![Uniswap Logo](https://upload.wikimedia.org/wikipedia/commons/2/28/Uniswap_logo.png)  
+*Uniswap logo — alt text: "Uniswap logo".*
+
+---
+
+## What is a **Swap Transaction** (high-level flow)?
+
+1. **User (EOA)** approves token (if ERC-20) to the router (if swapping ERC-20).
+2. **User** calls **Router.swapExactTokensForTokens** (or similar) on the Uniswap Router contract.
+3. **Router** transfers tokens into the pair contract, calls pair's `swap()` to update reserves and send tokens out.
+4. **EVM** executes the transaction atomically — either all state changes succeed or the entire tx **reverts** (and gas is consumed).
+5. **Transaction recorded in a block** — visible on Etherscan.
+
+**Transaction flow ASCII diagram:**
+
+~~~~
+[EOA: Alice]
+  |
+  |--(1) approve(token -> Router)--> [ERC20 token contract]
+  |
+  |--(2) tx: call Router.swapExactTokensForTokens ---> [Uniswap Router]
+                                                   |
+                                                   V
+                                          [Pair Contract (x,y) reserves]
+                                                   |
+                                                   V
+                                            [EVM executes swap()]
+                                                   |
+                                                   V
+                                         State changes: balances & reserves
+~~~~
+
+---
+
+## Swap Transaction Example — gas & fees (Ethereum)
+
+**Gas fee formula (LaTeX):**
+
+$$
+\text{Transaction Fee (ETH)} = \text{Gas Used} \times \text{Gas Price (in ETH)}
+$$
+
+**Gwei conversion:**  
+$$1 \text{ Gwei} = 10^{-9}\ \text{ETH}$$
+
+**Example numbers:**
+- Gas Used (estimate for ERC-20 swap): \( \text{GasUsed} = 150{,}000 \) gas  
+- Gas Price: \(20\) Gwei
+
+**Step-by-step calculation:**
+
+$$
+\text{Gas Price (ETH)} = 20 \times 10^{-9}\ \text{ETH} = 2.0 \times 10^{-8}\ \text{ETH}
+$$
+
+$$
+\text{Fee} = 150{,}000 \times 2.0 \times 10^{-8}\ \text{ETH} = 3.0 \times 10^{-3}\ \text{ETH} = 0.003\ \text{ETH}
+$$
+
+**Interpretation:** At these values the swap costs **~0.003 ETH** in gas.
+
+**Tip:** For precise gas fees on mainnet, use `provider.getFeeData()` (ethers.js) and estimate gas with `contract.estimateGas.method()`.
+
+---
 
 
 
