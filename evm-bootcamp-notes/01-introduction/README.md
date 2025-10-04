@@ -154,7 +154,7 @@ $$
 
 ---
 
-## 📊 Summary Table  
+## Summary Table  
 
 | Concept | Key Idea | Example |
 |---------|----------|---------|
@@ -248,6 +248,8 @@ Nonce: 5
 - Ensures users pay for the computation they use
 
 **Transaction Fee Formula:**
+
+
 $$
 \text{Transaction Fee} = \text{Gas Used} \times \text{Gas Price}
 $$
