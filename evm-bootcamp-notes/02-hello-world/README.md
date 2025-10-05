@@ -111,7 +111,7 @@ contract StorageExample {
 Each variable occupies one slot, identified as:
 
 $$
-\text{slot\_{address}} = \text{keccak256}(i)
+\text{slot\textsubscript{address}} = \text{keccak256}(i)
 $$
 
 where $$\(i\)$$ is the index of the variable in contract storage.
