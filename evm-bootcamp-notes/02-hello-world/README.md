@@ -22,12 +22,9 @@
 * Return values
 
 
-# Lesson 2 — Solidity: Variables and Storage Areas
+# Solidity: Variables and Storage Areas
 
-Welcome to **Lesson 2**! In this guide, you’ll learn how **Solidity** handles data through **variables** and the three main **storage areas** — **storage**, **memory**, and **stack**.  
-This knowledge is crucial for writing efficient and gas-optimized smart contracts.
 
----
 
 ## 🧠 1. Understanding Variables in Solidity
 
@@ -114,10 +111,10 @@ contract StorageExample {
 Each variable occupies one slot, identified as:
 
 $$
-\text{slot\_address} = \text{keccak256}(i)
+\text{slot\_{address}} = \text{keccak256}(i)
 $$
 
-where \(i\) is the index of the variable in contract storage.
+where $$\(i\)$$ is the index of the variable in contract storage.
 
 ### Storage Layout Visualization
 
