@@ -873,7 +873,7 @@ Mastering these variables helps you build reliable DApps that behave predictably
 
 
 
-
+---
 
 
 <https://docs.soliditylang.org/en/latest/units-and-global-variables.html>
