@@ -93,12 +93,13 @@ contract HelloWorld {
 
 ---
 
+# Extended Lecture Notes
+
+---
+
 
 
 # Lesson 1 – Introduction  
-
-
----
 
 ## What is a Wallet?  
 
@@ -269,6 +270,9 @@ $$
 - Always back up your **private key** and **recovery phrase**.  
 - Testnets are **free** and safe → practice here before mainnet.  
 - Gas fees are still required on testnets, but you use **free faucet ETH**.  
+
+
+---
 
 
 
@@ -482,7 +486,7 @@ Ethereum has **two main account types**:
 
 ---
 
-## What is a **dApp**?
+# What is a **dApp**?
 
 A **decentralized application (dApp)** is like a regular app but:
 - It uses a **blockchain** (e.g., Ethereum) for state and logic.
@@ -661,20 +665,11 @@ $$
 
 ---
 
-
-
-
-
-
-## Contract interaction: Token Swap
-
-* What is a state change inside a smart contract operation
-
-## Hands on coding - Remix
+# Hands on coding - Remix
 
 * Remix interface (overview)
 
-### References for Remix
+## References for Remix
 
 <https://remix-ide.readthedocs.io/en/latest/>
 
