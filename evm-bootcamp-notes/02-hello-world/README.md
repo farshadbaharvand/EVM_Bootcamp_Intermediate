@@ -111,7 +111,15 @@ function setText(string memory newText) public payable {
 <https://docs.soliditylang.org/en/latest/natspec-format.html#natspec>
 
 
+
+
+
 ---
+
+# Extended Lecture Notes
+
+---
+
 
 # Lesson 2 - Building HelloWorld.sol in Remix
 
