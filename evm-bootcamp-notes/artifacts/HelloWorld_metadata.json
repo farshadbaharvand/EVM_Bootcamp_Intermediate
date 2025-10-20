@@ -22,6 +22,58 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "initialText",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "restore",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "newText",
+						"type": "string"
+					}
+				],
+				"name": "setText",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "textHasChanged",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "returnValue_",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -37,7 +89,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"01-introduction/FirstHelloWorld.sol": "HelloWorld"
+			"03-syntax-structure/Exercises.sol": "HelloWorld"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -51,12 +103,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"01-introduction/FirstHelloWorld.sol": {
-			"keccak256": "0x35405694e1cff1cca7817fd34a82a420c0acaa37a26da6acb29291495ac4c79f",
+		"03-syntax-structure/Exercises.sol": {
+			"keccak256": "0x637bf84a040ed55f80b229f9d0f2e47840b10559cc58674f58a0fdb30daec588",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://db2bb6c446a24588a17a4c66f300eaa220ffa06a75c86227489562419f778ac8",
-				"dweb:/ipfs/QmNQq41unpLminGd5jpZK9Eah26SQSavJ4pP5DbX6eMku9"
+				"bzz-raw://7841eb2e1d5c478f6bca2358e0053ee634e12fe5130b4a331c263e89fab8aea5",
+				"dweb:/ipfs/QmSHVEKs9HCnYSwUEWPWJxVFP6KXwMjBYtHbTkR5vE4mNp"
 			]
 		}
 	},
